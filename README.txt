@@ -1,0 +1,1 @@
+Detta examensarbete är ett kortspel gjort i React.
