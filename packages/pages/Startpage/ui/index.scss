@@ -1,0 +1,13 @@
+@use "@cardgame/styles" as styles;
+
+.menuText {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.mainmenu {
+    @include styles.menu_layout;
+    width: 100vw;
+    height: 100vh;
+}

@@ -1,9 +1,11 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+import { Startpage } from "@cardgame/startpage";
+
 const routes = [
     {
         path: "/",
-        element: <h1>Start</h1>
+        element: <Startpage />
     }
 ];
 

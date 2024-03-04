@@ -1,0 +1,4 @@
+{
+    "name": "@cardgame/gamescreen",
+    "main": "./index.ts"
+}
