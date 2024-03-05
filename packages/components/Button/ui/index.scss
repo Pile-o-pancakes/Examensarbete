@@ -1,0 +1,7 @@
+@use "@cardgame/styles" as styles;
+
+.button {
+
+    width: styles.$basedistance * 12;
+    height: styles.$basedistance * 4;
+}

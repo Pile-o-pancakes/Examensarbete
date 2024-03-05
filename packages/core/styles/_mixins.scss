@@ -1,0 +1,19 @@
+@mixin menu_layout() {
+
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+@mixin popupwindow() {
+
+    @include menu_layout;
+    text-align: center;
+}
+
+@mixin menu_text() {
+
+
+}

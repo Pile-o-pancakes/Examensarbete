@@ -1,0 +1,7 @@
+@use "@cardgame/styles";
+
+.main-theme {
+    width: 100vw;
+    height: 100vh;
+    background-color: styles.$table-green;
+}
