@@ -1,9 +1,9 @@
 @mixin menu_layout() {
 
-    z-index: 0;
     margin: auto;
     display: flex;
     justify-content: space-around;
+    align-items: center;
     flex-direction: column;
 }
 

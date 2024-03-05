@@ -1,8 +1,15 @@
 @use "@cardgame/styles" as styles;
 
 .popup {
-    @include styles.menu_layout;
+    background-color: styles.$popup_background;
+    border-radius: 2%;
     z-index: 1;
-    width: 100vw;
-    height: 100vh;
+    position: absolute;
+    display: flex;
+    width: 60%;
+    height: 90%;
+}
+
+.popup_column {
+    @include styles.menu_layout
 }

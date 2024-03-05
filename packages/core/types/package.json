@@ -1,0 +1,4 @@
+{
+    "name": "@cardgame/types",
+    "main": "./index.ts"
+}
