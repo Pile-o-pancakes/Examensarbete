@@ -1,41 +1,44 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 import { Button } from "@cardgame/button";
-// import { gameSettings } from "@cardgame/types";
+import { gameSettings } from "@cardgame/types";
 
 import "./index.scss";
 
-export function NewGame(props: { isRendered: React.Dispatch<React.SetStateAction<boolean>> }) {
+export function NewGame(props: { isRendered: React.Dispatch<React.SetStateAction<boolean>>, setGameSettings: React.Dispatch<React.SetStateAction<gameSettings>> }) {
 
-    const nav = useNavigate();
+    const { isRendered } = props;
 
     const [settings, setSettings] = useState({
+        playerName: "",
         numOfRounds: 1,
-        players: [
-            {
-                id: 1,
-                attitude: "1"
-            }
-        ]
+        playerAttitudes: [1]
     });
 
-    function handleClickAdd() {//TODO: Snygga till
+    function handleClickAdd() {
 
-        if(settings.players.length < 3) {
+        if(settings.playerAttitudes.length < 3) {
 
-            const addPlayer = [...settings.players, { id: settings.players.length + 1, attitude: "1" }];
-            setSettings({ ...settings, players: addPlayer });
+            const addPlayer = settings.playerAttitudes.length;
+            const newSettings = [...settings.playerAttitudes, addPlayer];
+            setSettings({ ...settings, playerAttitudes: newSettings });
         }
     }
 
     function handleClickRemove() {
 
-        if(settings.players.length > 1) {
+        if(settings.playerAttitudes.length > 1) {
 
-            settings.players.splice(settings.players.length - 1);
-            setSettings({ ...settings });
+            let removePlayer = settings.playerAttitudes;
+            removePlayer.splice(removePlayer.length - 1);
+            setSettings({ ...settings, playerAttitudes: removePlayer });
         }
+    }
+
+    function handleClick() {
+
+        isRendered(false);
+        // setGameSettings(settings);
     }
 
     function handleOnChange(value:string) {
@@ -48,10 +51,13 @@ export function NewGame(props: { isRendered: React.Dispatch<React.SetStateAction
         <div className="popup">
             <section className="popup_column">
                 <h2>Nytt spel</h2>
-                <Button text="Tillbaka" onClick={ () => props.isRendered(false) }/>
+                <Button text="Tillbaka" onClick={ () => isRendered(false) }/>
+
+                <p>Ditt spelarnamn</p>
+                <input type="text"/>
 
                 <p>Antal rundor</p>
-                <select onChange={ (e) => handleOnChange(e.target.value) }>
+                <select name="rounds" onChange={ (e) => handleOnChange(e.target.value) }>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -59,26 +65,29 @@ export function NewGame(props: { isRendered: React.Dispatch<React.SetStateAction
                     <option value="5">5</option>
                 </select>
 
-                <p>Antal datorspelare, upp till 3</p>
+                <p>Antal datorspelare, 1 - 3</p>
                 <Button text="+" onClick={ handleClickAdd } />
                 <Button text="-" onClick={ handleClickRemove } />
-                <Button text="Deal!" onClick={ () => { nav(""); console.log(settings) } }/>
+                <Button text="Deal!" onClick={ () => handleClick() }/>
             </section>
 
             <section className="popup_column">
                 <p>Datorspelarnas spelstil</p>
-                { settings.players.map(function (currentPlayer, i) {
-                    return(
-                        <section key={ i }>
-                            <p>Spelare { currentPlayer.id }</p>
-                            <select>
-                                <option value="1">Normal</option>
-                                <option value="2">Försiktig</option>
-                                <option value="3">Aggressiv</option>
-                            </select>
-                        </section>
-                    )
-                }) }
+                { settings.playerAttitudes.map(function (currentPlayer, i) {
+                    if(currentPlayer != 0) {
+
+                        return(
+                            <section key={ i }>
+                                <p>Spelare { i + 1 }</p>
+                                <select>
+                                    <option value="1">Normal</option>
+                                    <option value="2">Försiktig</option>
+                                    <option value="3">Aggressiv</option>
+                                </select>
+                            </section>
+                        )
+                    }
+                })}
             </section>
         </div>
     )

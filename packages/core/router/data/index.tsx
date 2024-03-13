@@ -7,7 +7,7 @@ const routes = [
         path: "/",
         element: <Startpage />
     }
-];
+]
 
 export function Router() {
 

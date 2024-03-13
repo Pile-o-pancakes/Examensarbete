@@ -1,6 +1,6 @@
 export type gameSettings = {
 
+    playerName: string,
     numOfRounds: number,
-    numOfPlayers: number,
     playerAttitudes: Array<number>
 }
