@@ -5,9 +5,11 @@ import { gameSettings } from "@cardgame/types";
 
 import "./index.scss";
 
-export function NewGame(props: { isRendered: React.Dispatch<React.SetStateAction<boolean>>, setGameSettings: React.Dispatch<React.SetStateAction<gameSettings>> }) {
+export function NewGame(props: { isRendered: React.Dispatch<React.SetStateAction<boolean>>,
+        setGameSettings: React.Dispatch<React.SetStateAction<gameSettings>>,
+        setRenderGameScreen: React.Dispatch<React.SetStateAction<boolean>> }) {
 
-    const { isRendered } = props;
+    const { isRendered, setGameSettings, setRenderGameScreen } = props;
 
     const [settings, setSettings] = useState({
         playerName: "",
@@ -38,10 +40,16 @@ export function NewGame(props: { isRendered: React.Dispatch<React.SetStateAction
     function handleClick() {
 
         isRendered(false);
-        // setGameSettings(settings);
+        setGameSettings(settings);
+        setRenderGameScreen(true);
     }
 
-    function handleOnChange(value:string) {
+    function handleOnChangeName(value:string) {
+
+        setSettings({ ...settings, playerName: value })
+    }
+
+    function handleOnChangeRounds(value:string) {
 
         const rounds = parseInt(value);
         setSettings({ ...settings, numOfRounds: rounds});
@@ -54,10 +62,10 @@ export function NewGame(props: { isRendered: React.Dispatch<React.SetStateAction
                 <Button text="Tillbaka" onClick={ () => isRendered(false) }/>
 
                 <p>Ditt spelarnamn</p>
-                <input type="text"/>
+                <input type="text" onChange={ (e) => handleOnChangeName(e.target.value) }/>
 
                 <p>Antal rundor</p>
-                <select name="rounds" onChange={ (e) => handleOnChange(e.target.value) }>
+                <select name="rounds" onChange={ (e) => handleOnChangeRounds(e.target.value) }>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
