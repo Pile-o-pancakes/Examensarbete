@@ -3,18 +3,20 @@ import "./index.scss";
 type buttonProps = {
     text: string,
     onClick: React.MouseEventHandler<HTMLButtonElement>,
-    name?: string
+    name?: string,
+    type?: "button" | "submit" | "reset"
 }
 
 export function Button({
     text = "placeholder",
     onClick,
-    name
+    name,
+    type = "button"
 }: buttonProps) {
 
     return(
         <>
-            <button className="button" onClick={ onClick } name={ name }>{ text }</button>
+            <button className="button" type={ type } onClick={ onClick } name={ name }>{ text }</button>
         </>
     )
 }
