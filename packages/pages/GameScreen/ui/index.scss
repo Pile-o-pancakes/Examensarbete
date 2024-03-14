@@ -1,3 +1,9 @@
-game_screen {
-    z-index: 1
+@use "@cardgame/styles" as styles;
+
+.game_screen {
+    z-index: 1;
+    background-color: styles.$table-green;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
 }

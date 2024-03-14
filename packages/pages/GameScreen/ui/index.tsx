@@ -1,5 +1,7 @@
 import { gameSettings } from "@cardgame/types";
 
+import "./index.scss";
+
 export function GameScreen(props: { isRendered: React.Dispatch<React.SetStateAction<boolean>>, gameSettings: gameSettings }) {
 
     const { playerName, numOfRounds, playerAttitudes } = props.gameSettings;
