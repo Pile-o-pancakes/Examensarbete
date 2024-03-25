@@ -1,0 +1,4 @@
+{
+    "name": "@cardgame/hand",
+    "main": "./index.ts"
+}
