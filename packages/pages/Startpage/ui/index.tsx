@@ -9,9 +9,9 @@ import "./index.scss";
 export function Startpage() {
 
     const [ renderNewGamePopup, setRenderNewGamePopup ] = useState(false);
-    const [ renderGameScreen, setRenderGameScreen ] = useState(false);
+    const [ renderGameScreen, setRenderGameScreen ] = useState(true);//TODO: sätt till false efter testning
     const [ gameSettings, setGameSettings ] = useState({
-        playerName: "placeholder",
+        playerName: "Anonymous",
         numOfRounds: 1,
         playerAttitudes: [1]
     });

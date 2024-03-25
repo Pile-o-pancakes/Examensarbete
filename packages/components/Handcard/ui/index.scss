@@ -1,0 +1,9 @@
+@use "@cardgame/styles" as styles;
+
+.handcard {
+
+    background-color: styles.$card_white;
+    width: styles.$basedistance * 10;
+    height: styles.$basedistance * 16;
+    border-radius: styles.$basedistance;
+}
